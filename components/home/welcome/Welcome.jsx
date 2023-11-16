@@ -12,8 +12,12 @@ import {
 import styles from './welcome.style'
 import {icons, SIZES} from '../../../constants';
 
+const jobTypes = ["Full-time", "Part-time", "Contactor"]
+
 const Welcome = () => {
   const router = useRouter();
+  const [activeJobType, setActiveJobType] = useState('Full-time')
+
   return (
     <View>
       <View style={styles.container}>
@@ -30,6 +34,31 @@ const Welcome = () => {
             placeholder="What are you looking for?"
           />
         </View>
+
+        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+          <Image 
+            source={icons.search}
+            resizeMode="contain"
+            style={styles.searchBtnImage}
+          />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.tabsContainer}>
+        <FlatList
+          data={jobTypes}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.tab(activeJobType, item)}
+              onPress={() => {
+                setActiveJobType(item);
+                router.push(`/search/${item}`)
+              }}
+            >
+              <Text>{item}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </View>
   )
