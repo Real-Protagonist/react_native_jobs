@@ -7,27 +7,26 @@ import axios from 'axios';
 
 const useFetch = (endpoint, query) => {
     const [data, setData] = useState([]);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const axios = require('axios');
+    // const axios = require('axios');
 
     const options = {
     method: 'GET',
     url: `https://jsearch.p.rapidapi.com/${endpoint}`,
     headers: {
-        'X-RapidAPI-Key': '01272e89demshef44e9d1ef28810p141ebcjsndb2245e01b1b',
+        'X-RapidAPI-Key': 'KJwZZIJSFimshuivMSVGaiYzkRomp15f2vKjsnK4bKzuUzVLzA',
         'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
     },
-    params: { ...query}
+    params: { ...query }
     };
 
     const fetchData = async() => {
         setIsLoading(true);
 
         try {
-            const response = await axios.request;
-            (options);
+            const response = await axios.request(options);
 
             setData(response.data.data);
             setIsLoading(false);
