@@ -1,11 +1,11 @@
 import {useState} from 'react'
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
 import {useRouter} from 'expo-router'
 
 import styles from './popularjobs.style'
 import {COLORS, SIZES} from '../../../constants'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard';
-import { FlatList } from 'react-native-gesture-handler';
+// import { FlatList } from 'react-native-gesture-handler';
 import useFetch from '../../../hook/useFetch';
 
 const Popularjobs = () => {
@@ -19,6 +19,11 @@ const Popularjobs = () => {
       num_pages: 1
     }
   )
+
+  const [selectedJob, setSelectedJob] = useState();
+  const handleCardPress = (item) => {
+    
+  }
 
   return (
     <View style={styles.container}>
